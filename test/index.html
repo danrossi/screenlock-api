@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js vr - 360 stereo video</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=yes">
+	
+
+        <script src="../build/screenlock-api.min.js"></script>
+        <script src="../build/fullscreen-api.min.js"></script>
+        <script src="../build/iosutils.min.js"></script>
+		
+	</head>
+	<body>
+		<div id="container">
+			<video id="video" loop crossOrigin="anonymous" playsinline muted="true">
+				<source src="https://videos.electroteque.org/bitrate/big_buck_bunny_2000k.mp4">
+			</video>
+			<button id="fullscreen">Fullscreen</button>
+			<div></div>
+		</div>
+        
+        <style>
+
+
+            #container {
+                max-width: 1280px;
+            }
+
+            #fullscreen {
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+
+            video {
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+                
+
+        <script>
+            //console.log(ScreenLock, window);
+              
+                let isFullscreen;
+
+                const video = document.getElementById( 'video' ),
+                container = document.getElementById( 'container' ),
+                fs = document.getElementById("fullscreen");
+                container.addEventListener( 'click',  () => video.play());
+        		fs.addEventListener("click", () => setFullscreen());
+
+                if (!ScreenLockApi.supportsScreenLock) ScreenLockApi.lockElement(container);
+
+
+                //IOS Orientation permission check
+                if (IOSUtils.isIOS && IOSUtils.requireOrientationPermission) {
+                    const onIOSClick = () => {
+                        IOSUtils.requestOrientationPermissions().then((response) => {
+                            if ( response == 'granted' ) {
+                                window.addEventListener( 'orientationchange', () => {}, false );
+                                window.addEventListener( 'deviceorientation', () => {}, false );
+                            }
+                        });
+
+                        container.removeEventListener( 'click', onIOSClick);
+                    };
+                    container.addEventListener( 'click', onIOSClick);
+                }
+                
+
+
+        		document.addEventListener("fullscreenchange", onFsChange);
+        		document.addEventListener("webkitfullscreenchange", onFsChange);
+
+                function onFsChange(e) {
+                    const el = FullscreenApi.currentFullScreenElement;
+                    
+                    console.log("fullscreen", el);
+                    isFullscreen = !!el;
+
+                    if (isFullscreen) {
+                        ScreenLockApi.lock("landscape").then(() => {}).catch(() => {});
+                        fs.innerText = "Exit Fullscreen";
+                     } else {
+                        ScreenLockApi.unlock();
+                        fs.innerText = "Fullscreen";
+                     }
+                        
+                }
+
+                function setFullscreen() {
+                    if (!isFullscreen) {
+                        FullscreenApi.requestFullscreen(container);
+                    } else {
+                        FullscreenApi.exitFullscreen(container);
+                    }   
+                }
+        </script>
+
+
+
+
+
+	
+	</body>
+</html>

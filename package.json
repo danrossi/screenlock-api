@@ -1,0 +1,16 @@
+{
+    "name": "screenlock-polyfill",
+    "version": "1.0.0",
+    "description": "Screenlock Polyfill",
+    "main": "build/screenlock-polyfill.min.js",
+    "module": "build/screenlock-polyfill.module.js",
+    "scripts": {
+        "build": "rollup -c rollup.config.js"
+    },
+    "author": "danielr",
+    "devDependencies": {
+        "@rollup/plugin-terser": "^0.4.1",
+        "rollup": "^2.38.0",
+        "rollup-plugin-styles": "^4.0.0"
+    }
+}
