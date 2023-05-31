@@ -1,9 +1,9 @@
 {
-    "name": "screenlock-polyfill",
+    "name": "screenlock-api",
     "version": "1.0.0",
-    "description": "Screenlock Polyfill",
-    "main": "build/screenlock-polyfill.min.js",
-    "module": "build/screenlock-polyfill.module.js",
+    "description": "Screenlock API",
+    "main": "build/screenlock-api.min.js",
+    "module": "build/screenlock-api.module.js",
     "scripts": {
         "build": "rollup -c rollup.config.js"
     },
