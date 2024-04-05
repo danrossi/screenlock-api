@@ -1,4 +1,4 @@
-import "./src/style/screenlock.styl";
+//import "./src/style/screenlock.styl";
 
 import { default as ScreenLockApi } from './src/ScreenLockApi';
 

@@ -1,4 +1,4 @@
-import "./src/style/fullscreen.styl";
+//import "./src/style/fullscreen.styl";
 
 import {default as FullscreenApi } from './src/FullscreenApi';
 

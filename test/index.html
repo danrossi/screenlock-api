@@ -83,7 +83,7 @@
                     isFullscreen = !!el;
 
                     if (isFullscreen) {
-                        ScreenLockApi.lock("landscape").then(() => {}).catch(() => {});
+                        ScreenLockApi.lock("landscape").then((e) => { console.log("Screen Locked: ", e); }).catch((e) => { console.log("Screen Lock Error: ", e); })
                         fs.innerText = "Exit Fullscreen";
                      } else {
                         ScreenLockApi.unlock();

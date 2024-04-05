@@ -1,5 +1,5 @@
 import terser from '@rollup/plugin-terser';
-import styles from 'rollup-plugin-styles';
+//
 
 
 const banner = `
@@ -25,8 +25,7 @@ export default [
 	{
 		input: './screenlock.js',
 		plugins: [
-			styles()
-			//terser()
+			terser()
 		],
 		output: [
 			{
@@ -40,8 +39,7 @@ export default [
 	{
 		input: './fullscreen.js',
 		plugins: [
-			styles()
-			//terser()
+			terser()
 		],
 		output: [
 			{
@@ -53,36 +51,12 @@ export default [
 		]
 	},
 	{
-		input: './iosutils.js',
-		plugins: [
-			//terser()
-		],
-		output: [
-			{
-				format: 'umd',
-				name: "IOSUtils",
-				banner: banner,
-				file: 'build/iosutils.min.js'
-			}
-		]
-	},
-	{
 		input: './src/ScreenLockApi.js',
 		output: [
 			{
 				format: 'esm',
 				banner: banner,
 				file: 'build/screenlock-api.module.js'
-			}
-		]
-	},
-	{
-		input: './src/IOSUtils.js',
-		output: [
-			{
-				format: 'esm',
-				banner: banner,
-				file: 'build/iosutils.module.js'
 			}
 		]
 	},
