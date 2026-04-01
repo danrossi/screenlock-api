@@ -1,16 +1,16 @@
 {
-    "name": "screenlock-api",
-    "version": "1.0.0",
-    "description": "Screenlock API",
-    "main": "build/screenlock-api.min.js",
-    "module": "build/screenlock-api.module.js",
-    "scripts": {
-        "build": "rollup -c rollup.config.js"
-    },
-    "author": "danielr",
-    "devDependencies": {
-        "@rollup/plugin-terser": "^0.4.1",
-        "rollup": "^2.38.0",
-        "rollup-plugin-styles": "^4.0.0"
-    }
+  "name": "screenlock-api",
+  "version": "1.0.0",
+  "description": "Screenlock API",
+  "main": "build/screenlock-api.min.js",
+  "module": "build/screenlock-api.module.js",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c rollup.config.js"
+  },
+  "author": "danielr",
+  "devDependencies": {
+    "@rollup/plugin-terser": "^1.0.0",
+    "rollup": "^4.60.1"
+  }
 }
