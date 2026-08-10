@@ -2,15 +2,25 @@
   "name": "screenlock-api",
   "version": "1.0.0",
   "description": "Screenlock API",
-  "main": "build/screenlock-api.min.js",
   "module": "build/screenlock-api.module.js",
+  "types": "./build/ScreenLockApi.d.ts",
   "type": "module",
   "scripts": {
-    "build": "rollup -c rollup.config.js"
+    "build:screen": "vite build",
+    "build:fs": "vite build --config vite.config-fs.ts",
+    "build": "npm run build:screen && npm run build:fs"
   },
   "author": "danielr",
+  "overrides": {
+    "@microsoft/api-extractor": {
+      "typescript": "$typescript"
+    }
+  },
   "devDependencies": {
-    "@rollup/plugin-terser": "^1.0.0",
-    "rollup": "^4.60.1"
+    "@microsoft/api-extractor": "^7.58.12",
+    "@typescript/typescript6": "^6.0.2",
+    "three": "^0.185.1",
+    "unplugin-dts": "^1.0.3",
+    "vite": "^8.2.1"
   }
 }
